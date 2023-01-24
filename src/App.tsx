@@ -34,9 +34,17 @@ function App() {
     }
   }
 
+  const reset = () => {
+    setClickedPoints([]);
+    setUndoPoints([]);
+  }
+
   return (
     <>
       <div className="actions">
+        {(!!clickedPoints.length || !!undoPoints.length) && 
+          <button onClick={reset}>Zerar</button>
+        }
         <button disabled={!clickedPoints.length} onClick={handleUndo}>Desfazer {clickedPoints.length}</button>
         <button disabled={!undoPoints.length} onClick={handleRedo}>Refazer {undoPoints.length}</button>
       </div>
